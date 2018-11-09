@@ -1,0 +1,229 @@
+:root{
+    --game-width: 480px;
+    --game-height: 320px;
+}
+
+html{
+    background: #fcf8fc url('../images/noise-bg.png');
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#game{
+    width: var(--game-width) !important;
+    height: var(--game-height) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.scene{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #b0d0d8;
+    text-align: center;
+    transform: translate3d(0,100%,0);
+    transition: transform 0.3s ease-out;
+}
+
+.scene.active{
+    transform: translate3d(0,0,0);
+}
+
+
+.scene a:not(.link){
+    padding: 0.5em 1em; 
+    background: #619391;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 0.5em;
+}
+
+.scene a:not(.link):hover{
+    background: #466b6a;
+}
+
+
+#hud.scene{
+    opacity: 0;
+    transform: none;
+    background: none;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    text-align: center;
+}
+
+.hud-info{
+    display: inline-block;
+    background: #7c6749;
+    color: #fff;
+    padding: 0.5em 1rem;
+    font-size: 0.8em;
+    word-spacing: 3px;
+}
+
+.hud-info span{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#hud.active.scene{
+    opacity: 1;
+}
+
+
+/************* beautify screen **********/
+body{
+    padding: 0;
+    margin: 0;
+    background: url('../images/landscape.png') top center repeat-x;
+    border-top: 5px solid #008894;
+}
+
+header{
+    width: var(--game-width);
+    height: 100px;
+    margin: 2em auto;
+    background: url('../images/rush-header.png') center center no-repeat;
+    overflow: hidden;
+}
+
+header h1{
+    text-indent: 100%;
+    white-space: no-wrap;
+    visibility: hidden;
+}
+
+#game {
+    margin: auto;
+    box-shadow: 0 6px 3px -5px #000;
+    border-style: solid;
+    border-width: 2px;
+    border-top-color: #c5a578;
+    border-left-color: #977e5a;
+    border-right-color: #977e5a;
+    border-bottom-color: #7c6749;
+}
+
+#menu{
+    background: url('../images/rush-menu-scene.png');
+    padding: 2em;
+    padding-top: 150px;
+}
+#gameover{
+    background: url('../images/rush-gameover-scene.png');
+    padding-top: 170px;
+}
+
+section {
+    width: var(--game-width);
+    margin: auto;
+}
+
+ul.instructions{
+    list-style-image: url('../images/coin1.png');
+}
+
+.hr{
+    background: url('../images/hr.png') center center no-repeat;
+    height: 50px;
+}
+
+.hr hr{
+    display: none;
+}
+
+footer{
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    margin-bottom: 3em;
+}
+
+footer a{
+    text-decoration: none;
+    color: #999;
+    transition: all 0.3s ease-out;
+}
+
+footer a:hover{
+    color: #000;
+}
+
+/****** loader animation ********/
+
+
+.loader{
+    width: 100%;
+    height: 100%;
+    background: skyblue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameLoaded + .loader{
+    display: none;
+}
+
+
+
+
+
+.loader p{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+}
+
+
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+  .lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 6px;
+    box-sizing: border-box;
+    border: 26px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-hourglass 1.2s infinite;
+  }
+  @keyframes lds-hourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+
+  @media (max-width: 500px){
+      :root{
+          --game-width: 100%;
+      }
+  }
